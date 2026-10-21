@@ -9,8 +9,9 @@ Armazena os dados das pessoas que utilizam a plataforma.
 *   **id** (integer): Identificador único do utilizador.
 *   **name** (text): Nome de exibição do utilizador.
 *   **email** (text): E-mail para login.
-*   **password** (password): Palavra-passe encriptada.
+*   **password** (password): Palavra-passe armazenada como hash pelo Xano; nunca deve ser exposta em respostas ou logs. Requer pelo menos 8 caracteres, uma letra e um número.
 *   **created_at** (timestamp): Data de registo.
+*   **password_reset** (object, opcional): Token de redefinição armazenado como hash, prazo de expiração e indicador de uso único.
 
 ### 1.2. Game (Jogos)
 Armazena o cache/registo dos jogos na nossa base de dados. (Nota: muitos dados virão da API externa, mas guardamos o essencial aqui para relacionar com avaliações).

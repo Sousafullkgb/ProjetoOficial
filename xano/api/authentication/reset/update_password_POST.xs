@@ -39,7 +39,7 @@ query "reset/update_password" verb=POST {
         user_id   : $user.id
         account_id: $user.account_id
         action    : "reset_password"
-        metadata  : $user
+        metadata  : {}
       }
     } as $event_log
   }

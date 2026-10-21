@@ -55,7 +55,7 @@ query "auth/login" verb=POST {
         user_id   : $user.id
         account_id: $user.account_id
         action    : "login"
-        metadata  : $user
+        metadata  : {}
       }
     } as $event_log
   }

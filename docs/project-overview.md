@@ -39,7 +39,7 @@ Pessoas que jogam videogames e desejam organizar os jogos que estão jogando, os
 - Linguagem principal: Python.
 - Frontend: Streamlit.
 - OpenSpec: gerenciamento de especificações e desenvolvimento incremental.
-- Xano: integração com o backend, caso seja confirmado como a plataforma responsável pelos dados e pelas APIs.
+- Xano: backend responsável pelos dados e APIs da plataforma.
 
 ## 5. Princípios de desenvolvimento
 
@@ -50,14 +50,14 @@ Cada mudança deverá ser planejada e revisada antes de sua implementação.
 ## 6. Decisões pendentes
 
 - Definir a fonte dos dados dos jogos.
-- Definir se haverá cadastro e login de usuários e como serão implementados.
+- Cadastro e login serão realizados por e-mail e senha no Xano, com interface Streamlit e recuperação via SendGrid; consulte [autenticação](./authentication.md).
 - Definir a escala de notas.
 - Definir se cada usuário poderá publicar uma única review por jogo ou várias.
 - Definir se as notas e reviews serão públicas.
 - Definir se haverá cálculo de nota média dos usuários.
 - Definir se haverá integração com notas profissionais ou agregadores externos.
 - Definir o modelo de permissões e a gestão dos dados.
-- Confirmar o papel do Xano na arquitetura final.
+- O Xano será a fonte de verdade para usuários e APIs; a interface Streamlit manterá tokens somente durante a sessão.
 
 ## 7. Arquitetura Tecnológica (Stack)
 

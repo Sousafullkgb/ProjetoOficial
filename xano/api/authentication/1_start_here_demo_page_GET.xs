@@ -853,8 +853,7 @@ query "1_start_here_demo_page" verb=GET {
               return { accessToken };
             },
             async requestResetLink(email){
-              const url = Config.routes.requestResetLink + "?email=" + encodeURIComponent(email);
-              return await http(url, { method:"GET" });
+              return await http(Config.routes.requestResetLink, { method:"POST", body:{ email } });
             },
             async magicLogin(magic_token, email){
               const body = { magic_token };

@@ -3,8 +3,8 @@ query "reset/magic-link-login" verb=POST {
   api_group = "Authentication"
 
   input {
-    text magic_token? filters=trim
-    text email? filters=trim
+    text magic_token filters=trim
+    email email filters=trim|lower
   }
 
   stack {
@@ -34,6 +34,11 @@ query "reset/magic-link-login" verb=POST {
         "password_reset.used"
       ]
     } as $user
+
+    precondition ($user != null) {
+      error_type = "unauthorized"
+      error = "Invalid or expired password reset link."
+    }
   
     // Validate the UUID matches the hashed value
     security.check_password {
@@ -85,7 +90,7 @@ query "reset/magic-link-login" verb=POST {
         user_id   : $user.id
         account_id: $user.account_id
         action    : "login_for_password_reset"
-        metadata  : $user1
+        metadata  : {}
       }
     } as $event_log
   }

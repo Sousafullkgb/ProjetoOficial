@@ -3,9 +3,9 @@ query "auth/signup" verb=POST {
   api_group = "Authentication"
 
   input {
-    text name?
-    email email? filters=trim|lower
-    text password?
+    text name filters=trim|min:1
+    email email filters=trim|lower
+    text password filters=trim|min:8
   }
 
   stack {
@@ -47,7 +47,7 @@ query "auth/signup" verb=POST {
         user_id   : $user.id
         account_id: 0
         action    : "signup"
-        metadata  : $user
+        metadata  : {}
       }
     } as $event_log
   }
