@@ -61,6 +61,10 @@ class AuthenticationAppTests(unittest.TestCase):
 
         self.assertEqual(app.exception, [])
         self.assertIn("Bem-vindo, Jogador!", [message.value for message in app.success])
+        self.assertEqual(
+            request.call_args_list[0].args[1],
+            f"{API_URL}/auth/signup",
+        )
 
     @patch("requests.Session.request")
     def test_password_recovery_confirmation_is_generic(self, request: Mock) -> None:
